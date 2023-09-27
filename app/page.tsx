@@ -8,7 +8,10 @@ export default function Home() {
   return (
     <div>
       <div>
-        Header
+        Header<br /><br/>
+        Context: Catching server rendering error and showing fallback component without using error boundaries.<br /><br />
+        The two server component has a 80% chance of throwing errors. Keep refreshing to reload them.
+
         <a href="/" style={ { textDecoration: 'underline', color: '#aaa' } }>refresh page</a>
       </div>
       <TryCatch
@@ -18,8 +21,9 @@ export default function Home() {
         42
       </TryCatch>
       <TryCatch
-        Check={ ThrowableComponent }
+        Check={ ThrowableComponentWithParam }
         onError={ () => <ErrorMessage /> }
+        id="Hello World"
       >
         69
       </TryCatch>
@@ -40,8 +44,21 @@ async function ThrowableComponent(p: { children?: React.ReactNode }) {
       <div style={ { fontSize: "12rem" } }>
         { p.children }
       </div>
-      <div>
-        <a href="/" style={ { textDecoration: 'underline', color: '#aaa'} }>refresh page</a>
+    </div>
+  )
+}
+
+async function ThrowableComponentWithParam(p: { children?: React.ReactNode, id: string }) {
+  const rn = Math.random()
+  console.log(rn)
+  if (rn > 0.4) throw new Error("Intentional Oopsie " + rn)
+  return (
+    <div>
+      Hey it didn&apos;t break!
+      <br />
+      Here is children:
+      <div style={ { fontSize: "4rem" } }>
+        { p.children } { p.id }
       </div>
     </div>
   )

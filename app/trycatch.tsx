@@ -15,7 +15,7 @@ import { Suspense } from "react"
 
 
 export async function TryCatch<P>({ Check, onError, ...rest }: {
-  Check: React.FunctionComponent<any>,
+  Check: React.FunctionComponent<P>,
   // children?: React.ReactNode,
   onError: (error: any) => (React.ReactNode | Promise<React.ReactNode>),
 } & P) {
