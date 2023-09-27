@@ -6,13 +6,9 @@ import { ErrorMessage } from './trycatch.client'
 export const dynamic = 'force-dynamic'
 export default function Home() {
   return (
-    <div>
+    <>
       <div>
-        Header<br /><br/>
-        Context: Catching server rendering error and showing fallback component without using error boundaries.<br /><br />
-        The two server component has a 80% chance of throwing errors. Keep refreshing to reload them.
-
-        <a href="/" style={ { textDecoration: 'underline', color: '#aaa' } }>refresh page</a>
+        Static Server Component
       </div>
       <TryCatch
         Check={ ThrowableComponent }
@@ -27,7 +23,7 @@ export default function Home() {
       >
         69
       </TryCatch>
-    </div>
+    </>
   )
 }
 
