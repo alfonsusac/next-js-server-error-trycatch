@@ -23,7 +23,7 @@ export default function RootLayout({
             Context: Catching server rendering error and showing fallback component without using error boundaries.
           </p>
           <p>
-            The two server component has a 80% chance of throwing errors. Keep refreshing to reload them.
+            The two server component has a 60% chance of throwing errors. Keep refreshing to reload them.
           </p>
 
           <a href="/" style={ { textDecoration: 'underline', color: '#aaa' } }>refresh page</a>

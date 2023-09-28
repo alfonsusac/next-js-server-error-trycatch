@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache"
 import ErrorClientActionRunner from "./trycatch.client"
-import { Suspense } from "react"
+import { ClassicComponent, Component, ComponentClass, ComponentElement, ReactComponentElement, Suspense } from "react"
 
 /**
  * 1. Server tries to render component
@@ -21,6 +21,7 @@ export async function TryCatch<P>({ Check, onError, ...rest }: {
     const Checked = (await (Check as any)(rest))
     console.log("Trying Internal")
     return (Checked)
+
   } catch (error: any) {
     console.log("TryCarch error")
     console.log(error.toString())
